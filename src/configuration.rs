@@ -6,10 +6,13 @@ pub struct Settings {
 
 pub fn get_configration() -> Result<Settings, config::ConfigError> {
     let settings = config::Config::builder()
-    .add_source(config::File::new("configuration.yaml", config::FileFormat::Yaml))
-    .build()?;
+        .add_source(config::File::new(
+            "configuration.yaml",
+            config::FileFormat::Yaml,
+        ))
+        .build()?;
 
-settings.try_deserialize::<Settings>()
+    settings.try_deserialize::<Settings>()
 }
 
 #[derive(serde::Deserialize, Clone)]

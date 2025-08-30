@@ -1,7 +1,7 @@
 use std::net::TcpListener;
 use zero2prod::{configuration, startup::run};
 
-use sqlx::{PgConnection, Connection};
+use sqlx::{Connection, PgConnection};
 use zero2prod::configuration::get_configration;
 
 #[tokio::test]
@@ -25,7 +25,9 @@ async fn subscribe_returns_a_200_for_valid_form_data() {
     let configuration = get_configration().expect("Failed to read configuration.");
     let connection_string = configuration.database.connection_string();
 
-    let mut connection = PgConnection::connect(&connection_string).await.expect("Failed to connect to Postgres.");
+    let mut connection = PgConnection::connect(&connection_string)
+        .await
+        .expect("Failed to connect to Postgres.");
 
     let client = reqwest::Client::new();
 
