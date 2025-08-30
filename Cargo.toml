@@ -15,3 +15,8 @@ tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 [[bin]]
 name = "zero2prod"
 path = "src/main.rs"
+
+[dependencies.sqlx]
+version="0.8.6"
+default-features = false
+features = ["runtime-tokio-rustls", "postgres", "macros", "uuid", "chrono", "migrate"]
