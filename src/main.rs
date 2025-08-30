@@ -1,6 +1,6 @@
-use zero2prod;
-use std::net::TcpListener;
 use actix_web::dev::Server;
+use std::net::TcpListener;
+use zero2prod;
 
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {

@@ -1,10 +1,10 @@
-use std::{net::TcpListener};
+use std::net::TcpListener;
 
 use actix_web::test;
 use tokio::sync::mpsc::error;
 
 #[tokio::test]
-async fn health_check_works(){
+async fn health_check_works() {
     let address = spawn_app();
     let client = reqwest::Client::new();
 
@@ -36,13 +36,13 @@ async fn subscribe_returns_a_200_for_valid_form_data() {
 }
 
 #[tokio::test]
-async fn subscribe_returns_a_400_when_data_is_missing(){
+async fn subscribe_returns_a_400_when_data_is_missing() {
     let app_address = spawn_app();
     let client = reqwest::Client::new();
     let test_cases = vec![
         ("name=le%20guin", "missing the email"),
         ("email=ursula_le_guin%40gmail.com", "missing the name"),
-        ("", "missing both name and email")
+        ("", "missing both name and email"),
     ];
 
     for (invalid_body, error_message) in test_cases {
@@ -61,10 +61,7 @@ async fn subscribe_returns_a_400_when_data_is_missing(){
             error_message
         );
     }
-
-
 }
-
 
 fn spawn_app() -> String {
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind address");
