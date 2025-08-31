@@ -8,8 +8,6 @@ use tracing_bunyan_formatter::{BunyanFormattingLayer, JsonStorageLayer};
 use tracing_log::LogTracer;
 use tracing_subscriber::{EnvFilter, Registry, layer::SubscriberExt};
 
-use env_logger::Env;
-
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
     LogTracer::init().expect("Failed to set logger");
