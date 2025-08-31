@@ -1,9 +1,9 @@
 use actix_web::{
     HttpResponse,
-    web::{self, trace},
+    web::{self},
 };
 use chrono::Utc;
-use sqlx::{PgPool, query};
+use sqlx::PgPool;
 use tracing::Instrument;
 use uuid::Uuid;
 
